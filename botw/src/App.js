@@ -1,18 +1,31 @@
+import { connect } from 'react-redux';
+import { useEffect, useReducer } from 'react';
+
+import reducer from './reducers/index'
+
 import logo from './logo.svg';
 import './App.css';
+import Header from './components/Header'
+import Nav from './components/Nav'
+import Container from './components/Container'
 
-//Components to create
-//header
-//nav
-//contents
-//footer 
+function App(props) {
+ 
+  console.log("from app.js", props)
 
-function App() {
   return (
     <div className="App">
-       <h1>BotW Compendium</h1> 
+       <Header />
+       <Nav />
+       <Container />
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    ...state,
+  }
+}
+
+export default connect(mapStateToProps)(App);
